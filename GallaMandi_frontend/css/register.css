@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+     margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Same soft gradient as login */
+    background: linear-gradient(135deg, #f7f8fa, #e3e6e6);
+}
+
+.amazon-register {
+    width: 350px;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.register-box {
+     border: 1px solid #ddd;
+    padding: 25px 30px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.register-box h2 {
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    margin-top: 12px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #a6a6a6;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #f0c14b;
+    outline: none;
+    box-shadow: 0 0 3px 2px rgba(240,193,75,.5);
+}
+
+small {
+    font-size: 12px;
+    color: #555;
+}
+
+button {
+    margin-top: 18px;
+    width: 100%;
+    padding: 10px;
+    background: #ffd814;
+    border: 1px solid #fcd200;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #f7ca00;
+}
+
+.terms {
+    font-size: 12px;
+    margin-top: 18px;
+    line-height: 1.4;
+}
+
+.terms a {
+    color: #0066c0;
+    text-decoration: none;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+}
+
+.signin-section {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.signin-section hr {
+    margin-bottom: 10px;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.signin-section p {
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.signin-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #a6a6a6;
+    border-radius: 8px;
+    background: #f0f2f2;
+    text-decoration: none;
+    font-size: 13px;
+    color: black;
+}
+
+.signin-btn:hover {
+    background: #e3e6e6;
+}

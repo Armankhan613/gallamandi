@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GallaMandi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">GallaMandi</div>
+
+        <div class="search-bar">
+            <input id="searchInput" type="text" placeholder="Search products...">
+            <button id="searchBtn">Search</button>
+        </div>
+
+        <div class="nav-links">
+            <span id="user-section"></span>
+            <a href="cart.html">Cart 🛒 <span id="cart-count">(0)</span></a>
+            <a href="orders.html" id="orders-link" >My Orders</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to GallaMandi</h1>
+        <p>Best deals. Fast delivery. Trusted products.</p>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-container">
+        <h2>Featured Products</h2>
+        <div id="product-list" class="product-grid"></div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Cart - GallaMandi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">GallaMandi</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+    </div>
+</nav>
+
+<div class="cart-container">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <h3 id="total-price"></h3>
+    <button id="checkoutBtn">Proceed to Checkout</button>
+</div>
+
+<div id="checkoutModal" class="modal hidden">
+    <div class="modal-content">
+        <h2>Shipping Details</h2>
+
+        <form id="checkoutForm">
+            <input type="text" id="fullName" placeholder="Full Name" required>
+            <input type="text" id="phone" placeholder="Phone Number" required>
+            <input type="text" id="address" placeholder="Address" required>
+            <input type="text" id="city" placeholder="City" required>
+            <input type="text" id="pincode" placeholder="Pincode" required>
+
+            <button type="submit">Place Order</button>
+        </form>
+
+        <button id="closeModal" class="close-btn">Cancel</button>
+    </div>
+</div>
+
+<script src="js/cart.js"></script>
+</body>
+</html>
