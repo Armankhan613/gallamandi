@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:5000/api/cart";
+const BASE_URL="https://gallamandi.onrender.com/";
+const API_URL = `${BASE_URL}api/cart`;
 const token = localStorage.getItem("token");
 var my="";
 
@@ -60,7 +61,7 @@ async function loadCart() {
 }
 
 async function removeItem(id) {
-    await fetch(`http://localhost:5000/api/cart/${id}`, {
+    await fetch(`${BASE_URL}api/cart/${id}`, {
         method: "DELETE",
         headers: {
             "Authorization": "Bearer " + token
@@ -71,7 +72,7 @@ async function removeItem(id) {
 }
 
 async function updateQuantity(id, change) {
-    await fetch(`http://localhost:5000/api/cart/${id}`, {
+    await fetch(`${BASE_URL}api/cart/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -111,7 +112,7 @@ checkoutForm.addEventListener("submit", async (e) => {
     };
 
     try {
-        const response = await fetch("http://localhost:5000/api/orders/checkout", {
+        const response = await fetch(`${BASE_URL}api/orders/checkout`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

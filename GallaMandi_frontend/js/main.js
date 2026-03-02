@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:5000/api/products";
+const BASE_URL="https://gallamandi.onrender.com";
+const API_URL = `${BASE_URL}/api/products`;
 const productList = document.getElementById("product-list");
 
 function showSkeletons(count = 8) {
@@ -47,7 +48,7 @@ function displayProducts(products) {
         const card = document.createElement("div");
         card.classList.add("product-card");
 
-        const img_path = `http://localhost:5000${product.image_url}`;
+        const img_path = `${BASE_URL}${product.image_url}`;
 
         card.innerHTML = `
             <img src="${img_path}" />
@@ -74,7 +75,7 @@ async function addToCart(productId) {
     }
 
     try {
-        const response = await fetch("http://localhost:5000/api/cart", {
+        const response = await fetch(`${BASE_URL}/api/cart`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -126,7 +127,7 @@ function logout() {
 async function loadCartCount() {
     const token = localStorage.getItem("token");
 
-    const response = await fetch("http://localhost:5000/api/cart", {
+    const response = await fetch(`${BASE_URL}/api/cart`, {
         headers: {
             "Authorization": "Bearer " + token
         }
@@ -157,7 +158,7 @@ async function searchProducts(searchTerm) {
         showSkeletons();
 
         const response = await fetch(
-            `http://localhost:5000/api/products/search?q=${searchTerm}`
+            `${BASE_URL}/api/products/search?q=${searchTerm}`
         );
 
         const products = await response.json();

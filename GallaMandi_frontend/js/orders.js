@@ -26,7 +26,7 @@ async function loadOrders() {
   try {
 
     showOrderSkeletons();
-    const response = await fetch("http://localhost:5000/api/orders", {
+    const response = await fetch("https://gallamandi.onrender.com/api/orders", {
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -54,7 +54,7 @@ async function loadOrders() {
         .map(
           (item) => `
         <div class="order-item">
-            <img src="http://localhost:5000${item.image_url}" width="60">
+            <img src="https://gallamandi.onrender.com${item.image_url}" width="60">
             <div>
                 <p><strong>${item.name}</strong></p>
                 <p>Qty: ${item.quantity}</p>
