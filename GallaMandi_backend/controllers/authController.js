@@ -14,7 +14,14 @@ exports.registerUser = async (req, res) => {
       [name, email, hashedPassword],
       (err, result) => {
         if (err) {
-          return res.status(400).json({ message: "User already exists" });
+          console.error("DB Error:", err);
+
+          // Duplicate email error code
+          if (err.code === "ER_DUP_ENTRY") {
+            return res.status(400).json({ message: "Email already registered" });
+          }
+
+          return res.status(500).json({ message: "Database error" });
         }
 
         res.status(201).json({
@@ -23,10 +30,10 @@ exports.registerUser = async (req, res) => {
       }
     );
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Server error" });
   }
 };
-
 // LOGIN
 exports.loginUser = (req, res) => {
   const { email, password } = req.body;
