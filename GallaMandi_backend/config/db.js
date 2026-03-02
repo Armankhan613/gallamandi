@@ -1,6 +1,11 @@
 const mysql = require("mysql2");
 
-const db = mysql.createConnection(process.env.DATABASE_URL);
+const db = mysql.createConnection({
+  uri: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 db.connect((err) => {
   if (err) {
