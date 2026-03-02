@@ -1,14 +1,23 @@
 const mysql = require("mysql2");
 
-// Pass the DATABASE_URL directly as the first argument
-const db = mysql.createConnection(process.env.DATABASE_URL);
+const db = mysql.createConnection({
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+  port: process.env.MYSQLPORT,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 db.connect((err) => {
   if (err) {
-    console.error("❌ Database connection failed:", err.message);
-    // If it still says Access Denied, double-check your MYSQLPASSWORD in Railway
+    console.error("❌ Connection failed. Error details:");
+    console.error("Code:", err.code);
+    console.error("Message:", err.message);
   } else {
-    console.log("✅ Connected to Railway MySQL via Public Proxy");
+    console.log("✅ Successfully connected to Railway MySQL");
   }
 });
 
