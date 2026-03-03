@@ -1,6 +1,6 @@
 const db = require("../config/db");
 
-// ➕ Add to Cart
+
 exports.addToCart = (req, res) => {
   const userId = req.user.id;
   const { product_id, quantity } = req.body;
@@ -11,7 +11,7 @@ exports.addToCart = (req, res) => {
     [userId, product_id],
     (err, results) => {
       if (results.length > 0) {
-        // Update quantity if already exists
+        
         db.query(
           "UPDATE cart SET quantity = quantity + ? WHERE user_id=? AND product_id=?",
           [quantity, userId, product_id],
@@ -21,7 +21,7 @@ exports.addToCart = (req, res) => {
           }
         );
       } else {
-        // Insert new cart item
+       
         db.query(
           "INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)",
           [userId, product_id, quantity],
@@ -35,7 +35,7 @@ exports.addToCart = (req, res) => {
   );
 };
 
-// 🛒 Get User Cart
+
 exports.getCart = (req, res) => {
   const userId = req.user.id;
 
@@ -52,7 +52,7 @@ exports.getCart = (req, res) => {
   );
 };
 
-// ❌ Remove from Cart
+
 exports.removeFromCart = (req, res) => {
   const userId = req.user.id;
   const { id } = req.params;
@@ -67,13 +67,13 @@ exports.removeFromCart = (req, res) => {
   );
 };
 
-// 🔄 Update Quantity
+
 exports.updateQuantity = (req, res) => {
   const userId = req.user.id;
   const { id } = req.params;
   const { change } = req.body;
 
-  // First get current quantity
+  
   db.query(
     "SELECT quantity FROM cart WHERE id=? AND user_id=?",
     [id, userId],
@@ -85,7 +85,7 @@ exports.updateQuantity = (req, res) => {
 
       const newQuantity = results[0].quantity + change;
 
-      // If quantity becomes 0 or less → delete item
+     
       if (newQuantity <= 0) {
         db.query(
           "DELETE FROM cart WHERE id=? AND user_id=?",
