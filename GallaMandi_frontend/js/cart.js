@@ -89,17 +89,17 @@ const modal = document.getElementById("checkoutModal");
 const closeModal = document.getElementById("closeModal");
 const checkoutForm = document.getElementById("checkoutForm");
 
-/* Open modal */
+
 checkoutBtn.addEventListener("click", () => {
     modal.classList.remove("hidden");
 });
 
-/* Close modal */
+
 closeModal.addEventListener("click", () => {
     modal.classList.add("hidden");
 });
 
-/* Submit order with shipping details */
+
 checkoutForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 

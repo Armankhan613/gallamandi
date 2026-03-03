@@ -141,7 +141,7 @@ async function loadCartCount() {
 
 updateNavbar();
 
-// Debounce function
+
 function debounce(func, delay) {
     let timeout;
     return function (...args) {
@@ -152,7 +152,7 @@ function debounce(func, delay) {
     };
 }
 
-// Search API call
+
 async function searchProducts(searchTerm) {
     try {
         showSkeletons();
@@ -170,7 +170,7 @@ async function searchProducts(searchTerm) {
     }
 }
 
-// Connect navbar search
+
 const searchInput = document.getElementById("searchInput");
 const searchBtn = document.getElementById("searchBtn");
 
