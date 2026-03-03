@@ -15,10 +15,12 @@ const orderRoutes = require("./routes/orderRoutes");
 const app = express();
 
 app.use(cors({
-  origin: "*",  
+  origin: [
+    "http://127.0.0.1:5500",   
+    "https://gallamandi.vercel.app"  
+  ],
   credentials: true
-}
-));
+}));
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
