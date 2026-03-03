@@ -9,7 +9,6 @@ body {
     padding-top: 70px;
 }
 
-/* Navbar */
 .navbar {
     position: fixed;
     top: 0;
@@ -71,7 +70,7 @@ body {
     text-decoration: underline;
 }
 
-/* Hero */
+
 .hero {
     background: linear-gradient(to right, #eaeded, #f7f8fa);
     text-align: center;
@@ -83,7 +82,7 @@ body {
     font-size: 32px;
 }
 
-/* Products */
+
 .products-container {
     padding: 20px;
 }
@@ -130,28 +129,7 @@ body {
     box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
 
-/* .auth-container {
-    width: 300px;
-    margin: 80px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-} */
 
-/* .auth-container input {
-    width: 100%;
-    padding: 8px;
-    margin: 10px 0;
-}
-
-.auth-container button {
-    width: 100%;
-    padding: 8px;
-    background-color: #ffd814;
-    border: none;
-    cursor: pointer;
-} */
 .cart-container {
     width: 70%;
     margin: 40px auto;
@@ -181,11 +159,6 @@ body {
     font-weight: 500;
 }
 
-/* .cart-item span:first-child {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-} */
 
 #checkoutBtn {
     margin-top: 20px;
@@ -205,14 +178,7 @@ body {
     display: none;
 }
 
-/* .cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    } */
-    
+
 .qty-control {
         display: flex;
         gap: 8px;
@@ -224,7 +190,7 @@ body {
         height: 30px;
         cursor: pointer;
     }
-/* ================= Modal ================= */
+
 
 .modal {
     position: fixed;
@@ -331,7 +297,7 @@ button:hover {
     opacity: 0.9;
 }
 
-/* RESPONSIVENESS */
+
 @media (max-width: 768px) {
 
     .cart-container,
@@ -390,7 +356,7 @@ button:hover {
     }
 }
 
-/* Product Skeleton Card */
+
 .skeleton-card {
     background: white;
     padding: 15px;
