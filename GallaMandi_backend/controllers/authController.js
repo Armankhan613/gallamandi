@@ -2,7 +2,7 @@ const db = require("../config/db");
 const bcrypt = require("bcryptjs");
 const generateToken = require("../utils/generateToken");
 
-// REGISTER
+
 exports.registerUser = async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -16,7 +16,7 @@ exports.registerUser = async (req, res) => {
         if (err) {
           console.error("DB Error:", err);
 
-          // Duplicate email error code
+         
           if (err.code === "ER_DUP_ENTRY") {
             return res.status(400).json({ message: "Email already registered" });
           }
@@ -34,7 +34,7 @@ exports.registerUser = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
-// LOGIN
+
 exports.loginUser = (req, res) => {
   const { email, password } = req.body;
 
