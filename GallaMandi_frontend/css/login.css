@@ -9,8 +9,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* Soft background */
     background: linear-gradient(135deg, #f7f8fa, #e3e6e6);
 }
 
