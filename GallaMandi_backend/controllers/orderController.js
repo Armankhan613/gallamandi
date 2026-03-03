@@ -1,12 +1,12 @@
 const db = require("../config/db");
 
-// 🟢 Checkout
+
 exports.checkout = (req, res) => {
     const user_id = req.user.id;
 
     const { fullName, phone, address, city, pincode } = req.body;
 
-    // ✅ Basic validation
+  
     if (!fullName || !phone || !address || !city || !pincode) {
         return res.status(400).json({ message: "All shipping fields are required" });
     }
@@ -30,7 +30,7 @@ exports.checkout = (req, res) => {
             total += item.price * item.quantity;
         });
 
-        // ✅ Updated query with shipping fields
+      
         const createOrder = `
             INSERT INTO orders 
             (user_id, total_amount, recepient, phone, address, city, pincode)
@@ -60,7 +60,7 @@ exports.checkout = (req, res) => {
                 db.query(insertItems, [values], (err) => {
                     if (err) return res.status(500).json(err);
 
-                    // ✅ Clear cart
+                   
                     db.query("DELETE FROM cart WHERE user_id = ?", [user_id]);
 
                     res.json({
@@ -73,7 +73,7 @@ exports.checkout = (req, res) => {
     });
 };
 
-// 🔵 Get User Orders WITH Items
+
 exports.getUserOrders = (req, res) => {
     const user_id = req.user.id;
 
@@ -107,7 +107,7 @@ exports.getUserOrders = (req, res) => {
 
             db.query(itemsSql, [order.id], (err, items) => {
 
-                if (hasError) return; // stop further responses
+                if (hasError) return; 
 
                 if (err) {
                     hasError = true;
@@ -119,7 +119,7 @@ exports.getUserOrders = (req, res) => {
                 completed++;
 
                 if (completed === orders.length) {
-                    res.json(orders); // sent ONLY ONCE
+                    res.json(orders);
                 }
             });
         });
