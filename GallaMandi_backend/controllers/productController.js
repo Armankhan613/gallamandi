@@ -1,6 +1,6 @@
 const db = require("../config/db");
 
-// 🛍 Create Product (Admin Only)
+
 exports.createProduct = (req, res) => {
   const { name, description, price, image_url, category, stock } = req.body;
 
@@ -17,7 +17,7 @@ exports.createProduct = (req, res) => {
   );
 };
 
-// 📦 Get All Products (Public)
+
 exports.getProducts = (req, res) => {
   db.query("SELECT * FROM products", (err, results) => {
     if (err) {
@@ -28,7 +28,7 @@ exports.getProducts = (req, res) => {
   });
 };
 
-// 🔎 Get Single Product
+
 exports.getSingleProduct = (req, res) => {
   const { id } = req.params;
 
@@ -41,7 +41,7 @@ exports.getSingleProduct = (req, res) => {
   });
 };
 
-// ✏ Update Product (Admin Only)
+
 exports.updateProduct = (req, res) => {
   const { id } = req.params;
   const { name, description, price, image_url, category, stock } = req.body;
@@ -59,7 +59,7 @@ exports.updateProduct = (req, res) => {
   );
 };
 
-// ❌ Delete Product (Admin Only)
+
 exports.deleteProduct = (req, res) => {
   const { id } = req.params;
 
@@ -72,7 +72,7 @@ exports.deleteProduct = (req, res) => {
   });
 };
 
-// 🔍 Search Products
+
 exports.searchProducts = (req, res) => {
   const searchTerm = req.query.q;
 
