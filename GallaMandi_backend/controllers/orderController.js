@@ -33,7 +33,7 @@ exports.checkout = (req, res) => {
         // ✅ Updated query with shipping fields
         const createOrder = `
             INSERT INTO orders 
-            (user_id, total_amount, full_name, phone, address, city, pincode)
+            (user_id, total_amount, recepient, phone, address, city, pincode)
             VALUES (?, ?, ?, ?, ?, ?, ?)
         `;
 

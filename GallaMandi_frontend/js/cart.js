@@ -84,7 +84,7 @@ async function updateQuantity(id, change) {
     loadCart();
 }
 
-    const checkoutBtn = document.getElementById("checkoutBtn");
+const checkoutBtn = document.getElementById("checkoutBtn");
 const modal = document.getElementById("checkoutModal");
 const closeModal = document.getElementById("closeModal");
 const checkoutForm = document.getElementById("checkoutForm");
