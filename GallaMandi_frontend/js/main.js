@@ -62,8 +62,9 @@ function displayProducts(products) {
                 Add to Cart
             </button>
         `;
-        card.onclick=openProduct(product.id);
-
+        card.addEventListener("click", (id) => {
+            window.location.href = `product.html?id=${id}`;
+        });
         productList.appendChild(card);
     });
 }
