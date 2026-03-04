@@ -11,11 +11,21 @@ async function loadProduct() {
   const container = document.getElementById("product-container");
 
   container.innerHTML = `
-    <h1>${product.name}</h1>
-    <img src="${product.image_url}" width="300"/>
-    <p><strong>Price:</strong> ₹${product.price}</p>
-    <p>${product.description || "No description available"}</p>
-    <button onclick="addToCart(${product.id})">Add to Cart</button>
+    <div class="product-image">
+      <img src="${product.image_url}" alt="${product.name}">
+    </div>
+
+    <div class="product-details">
+      <h1 class="product-title">${product.name}</h1>
+      <p class="product-price">₹${product.price}</p>
+      <p class="product-description">
+        ${product.description || "Fresh quality agricultural product available at best market price."}
+      </p>
+
+      <button class="add-to-cart-btn" onclick="addToCart(${product.id})">
+        Add to Cart
+      </button>
+    </div>
   `;
 }
 

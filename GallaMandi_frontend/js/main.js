@@ -204,3 +204,4 @@ if (searchInput && productList) {
     });
 }
 
+
