@@ -21,10 +21,6 @@ async function loadProduct() {
       <p class="product-description">
         ${product.description || "Fresh quality agricultural product available at best market price."}
       </p>
-
-      <button class="add-to-cart-btn"  onclick="()=>{addToCart(${product.id}); alert("Successfully added to cart");}">
-        Add to Cart
-      </button>
     </div>
   `;
 
