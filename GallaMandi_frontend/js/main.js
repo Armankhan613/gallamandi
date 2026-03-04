@@ -20,6 +20,10 @@ function showSkeletons(count = 8) {
     }
 }
 
+function openProduct(id) {
+  window.location.href = `product.html?id=${id}`;
+}
+
 
     async function loadProducts() {
     try {
@@ -58,6 +62,7 @@ function displayProducts(products) {
                 Add to Cart
             </button>
         `;
+        card.onclick=openProduct(product.id);
 
         productList.appendChild(card);
     });
