@@ -49,17 +49,27 @@ function displayProducts(products) {
         const img_path = `${BASE_URL}${product.image_url}`;
 
         card.innerHTML = `
-            <img src="${img_path}" />
-            <h3>${product.name}</h3>
-            <p>₹${product.price}</p>
+            <img src="${img_path}" id="image" />
+            <h3 id="prodHead">${product.name}</h3>
+            <p id="prodPrice">₹${product.price}</p>
             <button onclick="addToCart(${product.id})">
                 Add to Cart
             </button>
         `;
         const idt=product.id;
-        card.addEventListener("click", () => {
+        const img=document.getElementById("image");
+        const head=document.getElementById("prodHead");
+        const rate=document.getElementById("prodPrice");
+        img.addEventListener("click", () => {
             window.location.href = `product.html?id=${idt}`;
         });
+        head.addEventListener("click", () => {
+            window.location.href = `product.html?id=${idt}`;
+        });
+        rate.addEventListener("click", () => {
+            window.location.href = `product.html?id=${idt}`;
+        });
+
         productList.appendChild(card);
     });
 }
