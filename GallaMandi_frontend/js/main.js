@@ -19,12 +19,6 @@ function showSkeletons(count = 8) {
         productList.appendChild(div);
     }
 }
-
-function openProduct(id) {
-  window.location.href = `product.html?id=${id}`;
-}
-
-
     async function loadProducts() {
     try {
         showSkeletons();
@@ -62,8 +56,9 @@ function displayProducts(products) {
                 Add to Cart
             </button>
         `;
-        card.addEventListener("click", (id) => {
-            window.location.href = `product.html?id=${id}`;
+        const idt=product.id;
+        card.addEventListener("click", () => {
+            window.location.href = `product.html?id=${idt}`;
         });
         productList.appendChild(card);
     });
