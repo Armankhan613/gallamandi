@@ -56,20 +56,12 @@ function displayProducts(products) {
                 Add to Cart
             </button>
         `;
-        const idt=product.id;
-        const img=document.getElementById("image");
-        const head=document.getElementById("prodHead");
-        const rate=document.getElementById("prodPrice");
-        img.addEventListener("click", () => {
-            window.location.href = `product.html?id=${idt}`;
+        const clickables=card.querySelectorAll("#image , #prodHead , #prodPrice");
+         clickables.forEach(el => {
+            el.addEventListener("click", () => {
+                window.location.href = `product.html?id=${product.id}`;
+            });
         });
-        head.addEventListener("click", () => {
-            window.location.href = `product.html?id=${idt}`;
-        });
-        rate.addEventListener("click", () => {
-            window.location.href = `product.html?id=${idt}`;
-        });
-
         productList.appendChild(card);
     });
 }
