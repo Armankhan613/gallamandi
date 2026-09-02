@@ -115,7 +115,7 @@ Contributions are welcome! To contribute:
 Please include screenshots and a clear description for UI changes.
 
 ## License
-Add a LICENSE file (for example, MIT) and update this section accordingly.
+This is a demo project for educational purpose and to showcase on portfolio.
 
 ## Contact
 Project maintainer: @Armankhan613
