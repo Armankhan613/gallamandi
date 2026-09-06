@@ -1,6 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: "DM Sans", sans-serif;
@@ -8,33 +15,303 @@ body {
   color: #18231b;
   overflow-x: hidden;
 }
-button, input, textarea, select { font: inherit; }
-img { max-width: 100%; }
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================
+   PRODUCT PAGE
+========================= */
+
 .product-wrapper {
   width: min(1180px, calc(100% - 32px));
   margin: clamp(26px, 5vw, 50px) auto;
 }
+
 .product-container {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   gap: clamp(24px, 5vw, 55px);
-  align-items: center;
+
+  /*
+    Important:
+    Do not vertically center the details against
+    very tall product images.
+  */
+  align-items: start;
+
   background: #fff;
   border: 1px solid #e1e8df;
   padding: clamp(22px, 4vw, 42px);
   border-radius: 25px;
   box-shadow: 0 18px 55px rgba(18, 53, 31, 0.09);
+
+  min-width: 0;
 }
+
+/* =========================
+   IMAGE
+========================= */
+
 .product-image {
-  min-height: 300px;
+  width: 100%;
+  min-width: 0;
+
+  /*
+    Fixed responsive viewing area.
+    The image itself will NEVER escape this area.
+  */
   height: clamp(320px, 42vw, 460px);
+
   border-radius: 18px;
   background: #f4faf4;
-  display: grid;
-  place-items: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   padding: clamp(18px, 4vw, 30px);
+
+  overflow: hidden;
 }
-.product-image img { width: 100%; height: 100%; object-fit: contain; }
+
+.product-image img {
+  display: block;
+
+  /*
+    These constraints are important for
+    extremely tall / vertical images.
+  */
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+/* =========================
+   PRODUCT DETAILS
+========================= */
+
+.product-details {
+  min-width: 0;
+  width: 100%;
+
+  /*
+    Ensures long descriptions/attributes
+    cannot push outside the column.
+  */
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.product-kicker {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.7px;
+  color: #2f7d42;
+  font-weight: 700;
+}
+
+.product-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(34px, 5vw, 48px);
+  line-height: 1.05;
+  margin: 10px 0 16px;
+  color: #12351f;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.product-price {
+  font-size: clamp(24px, 3vw, 28px);
+  font-weight: 800;
+  color: #1f6b35;
+  margin: 0 0 20px;
+}
+
+.product-description {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #68736b;
+  margin: 0 0 28px;
+
+  overflow-wrap: anywhere;
+}
+
+.add-to-cart-btn {
+  min-height: 46px;
+  padding: 13px 22px;
+  font-size: 15px;
+  background: #1f6b35;
+  color: #fff;
+  border: none;
+  border-radius: 11px;
+  cursor: pointer;
+  font-weight: 700;
+
+  max-width: 100%;
+}
+
+.add-to-cart-btn:hover {
+  background: #12351f;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: #1f6b35;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.stock-note {
+  font-size: 13px;
+  color: #68736b;
+  margin-top: 14px;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .product-container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .product-image {
+    height: min(58vw, 420px);
+    min-height: 300px;
+  }
+
+  .product-details {
+    text-align: center;
+  }
+
+  .product-description {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 560px) {
+  .product-wrapper {
+    width: min(100% - 24px, 1180px);
+    margin: 22px auto 34px;
+  }
+
+  .product-container {
+    width: 100%;
+    padding: 18px;
+    border-radius: 18px;
+    gap: 22px;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 68vw;
+    min-height: 220px;
+    max-height: 330px;
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .product-details {
+    width: 100%;
+    text-align: center;
+  }
+
+  .product-kicker {
+    font-size: 11px;
+  }
+
+  .product-title {
+    font-size: clamp(30px, 10vw, 38px);
+    line-height: 1.08;
+  }
+
+  .product-price {
+    font-size: 24px;
+  }
+
+  .product-description {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+
+  .add-to-cart-btn {
+    width: 100%;
+  }
+}
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 360px) {
+  .product-wrapper {
+    width: calc(100% - 20px);
+  }
+
+  .product-container {
+    padding: 14px;
+    gap: 18px;
+  }
+
+  .product-image {
+    height: 62vw;
+    min-height: 200px;
+    padding: 12px;
+  }
+
+  .product-title {
+    font-size: 29px;
+  }
+
+  .product-description {
+    font-size: 14px;
+  }
+}
+
+/* =========================
+   ACCESSIBILITY
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}.product-image img { width: 100%; height: 100%; object-fit: contain; }
 .product-details { min-width: 0; }
 .product-kicker {
   font-size: 12px;
