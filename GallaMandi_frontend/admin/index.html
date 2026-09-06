@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GallaMandi Admin</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#dashboard">Galla<span>Mandi</span><small>ADMIN</small></a>
+      <button class="nav-link active" data-section="dashboard">Dashboard</button>
+      <button class="nav-link" data-section="products">Products</button>
+      <button class="nav-link" data-section="orders">Orders</button>
+      <button class="nav-link" data-section="users">Users</button>
+      <a class="back-link" href="../index.html">← Storefront</a>
+      <button id="logoutBtn" class="logout-link">Logout</button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Operations</p>
+          <h1 id="pageTitle">Dashboard</h1>
+        </div>
+        <div class="admin-badge">Admin</div>
+      </header>
+
+      <section id="dashboard" class="section active">
+        <div class="stats-grid">
+          <article class="stat"><span>Active products</span><strong id="statProducts">—</strong></article>
+          <article class="stat"><span>Orders</span><strong id="statOrders">—</strong></article>
+          <article class="stat"><span>Users</span><strong id="statUsers">—</strong></article>
+          <article class="stat"><span>Revenue</span><strong id="statRevenue">—</strong></article>
+        </div>
+        <div class="panel intro-panel">
+          <div>
+            <p class="eyebrow">GallaMandi control room</p>
+            <h2>Manage your marketplace from one place.</h2>
+            <p>Products, inventory, orders and users are protected by the backend admin role.</p>
+          </div>
+          <button class="primary" data-section-jump="products">Manage products</button>
+        </div>
+      </section>
+
+      <section id="products" class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Catalog</p>
+            <h2>Products</h2>
+          </div>
+          <button id="addProductBtn" class="primary">+ Add product</button>
+        </div>
+        <div id="productsTableWrap" class="panel table-wrap"></div>
+      </section>
+
+      <section id="orders" class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Fulfilment</p>
+            <h2>Orders</h2>
+          </div>
+          <button id="refreshOrders" class="secondary">Refresh</button>
+        </div>
+        <div id="ordersWrap" class="orders-grid"></div>
+      </section>
+
+      <section id="users" class="section">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Accounts</p>
+            <h2>Users</h2>
+          </div>
+          <button id="refreshUsers" class="secondary">Refresh</button>
+        </div>
+        <div id="usersTableWrap" class="panel table-wrap"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div>
+          <p class="eyebrow">Catalog editor</p>
+          <h2 id="modalTitle">Add product</h2>
+        </div>
+        <button id="closeModal" class="icon-btn" aria-label="Close">×</button>
+      </div>
+      <form id="productForm">
+        <input id="productId" type="hidden" />
+        <label>Name<input id="productName" required maxlength="255" /></label>
+        <div class="form-grid">
+          <label>Category<input id="productCategory" required /></label>
+          <label>Price (₹)<input id="productPrice" type="number" min="0" step="0.01" required /></label>
+          <label>Stock<input id="productStock" type="number" min="0" step="1" required /></label>
+          <label>Product image
+            <input id="productImage" type="file" accept="image/jpeg,image/png,image/webp,image/gif" />
+            <span class="field-help">JPG, PNG, WEBP or GIF · max 5 MB. Leave empty while editing to keep the current image.</span>
+          </label>
+        </div>
+        <div id="imagePreviewWrap" class="image-preview-wrap hidden">
+          <img id="productImagePreview" class="image-preview" alt="Product preview" />
+          <div>
+            <strong>Current image</strong>
+            <span class="muted">A newly selected image will replace it.</span>
+          </div>
+        </div>
+        <label>Description<textarea id="productDescription" rows="4"></textarea></label>
+        <div>
+          <div class="field-row"><label class="field-label">Attributes</label><button type="button" id="addAttribute" class="small-btn">+ Add attribute</button></div>
+          <div id="attributesList" class="attributes-list"></div>
+        </div>
+        <div class="form-actions">
+          <button type="button" id="cancelModal" class="secondary">Cancel</button>
+          <button type="submit" class="primary">Save product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="../js/config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

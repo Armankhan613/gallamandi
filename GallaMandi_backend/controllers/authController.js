@@ -2,69 +2,68 @@ const db = require("../config/db");
 const bcrypt = require("bcryptjs");
 const generateToken = require("../utils/generateToken");
 
-
 exports.registerUser = async (req, res) => {
   const { name, email, password } = req.body;
+
+  if (!name || !email || !password) {
+    return res.status(400).json({ message: "Name, email and password are required" });
+  }
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    db.query(
-      "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
-      [name, email, hashedPassword],
-      (err, result) => {
-        if (err) {
-          console.error("DB Error:", err);
-
-         
-          if (err.code === "ER_DUP_ENTRY") {
-            return res.status(400).json({ message: "Email already registered" });
-          }
-
-          return res.status(500).json({ message: "Database error" });
-        }
-
-        res.status(201).json({
-          message: "User registered successfully",
-        });
-      }
+    await db.query(
+      "INSERT INTO users (name, email, password) VALUES ($1, $2, $3)",
+      [name.trim(), email.trim().toLowerCase(), hashedPassword]
     );
+
+    return res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
+    console.error("Register error:", error);
+
+    if (error.code === "23505") {
+      return res.status(400).json({ message: "Email already registered" });
+    }
+
+    return res.status(500).json({ message: "Database error" });
   }
 };
 
-exports.loginUser = (req, res) => {
+exports.loginUser = async (req, res) => {
   const { email, password } = req.body;
 
-  db.query(
-    "SELECT * FROM users WHERE email = ?",
-    [email],
-    async (err, results) => {
-      if (err || results.length === 0) {
-        return res.status(400).json({ message: "Invalid credentials" });
-      }
+  if (!email || !password) {
+    return res.status(400).json({ message: "Email and password are required" });
+  }
 
-      const user = results[0];
+  try {
+    const { rows } = await db.query(
+      "SELECT * FROM users WHERE email = $1",
+      [email.trim().toLowerCase()]
+    );
 
-      const isMatch = await bcrypt.compare(password, user.password);
-
-      if (!isMatch) {
-        return res.status(400).json({ message: "Invalid credentials" });
-      }
-
-      const token = generateToken(user.id, user.role);
-
-
-
-      res.json({
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        token,
-      });
+    if (rows.length === 0) {
+      return res.status(400).json({ message: "Invalid credentials" });
     }
-  );
+
+    const user = rows[0];
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid credentials" });
+    }
+
+    const token = generateToken(user.id, user.role);
+
+    return res.json({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      token,
+    });
+  } catch (error) {
+    console.error("Login error:", error);
+    return res.status(500).json({ message: "Server error" });
+  }
 };

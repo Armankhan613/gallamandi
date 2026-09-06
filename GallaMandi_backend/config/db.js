@@ -1,32 +1,45 @@
-const mysql = require("mysql2");
+const { Pool } = require("pg");
+require("dotenv").config();
 
+if (!process.env.DATABASE_URL) {
+  throw new Error("DATABASE_URL is not set");
+}
 
-console.log("Checking Config...");
-console.log("Host:", process.env.MYSQLHOST);
-console.log("User:", process.env.MYSQLUSER);
-console.log("DB Name:", process.env.MYSQLDATABASE);
-console.log("Password Length:", process.env.MYSQLPASSWORD ? process.env.MYSQLPASSWORD.length : 0);
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
 
-
-const db = mysql.createConnection({
-  host: process.env.MYSQLHOST,
-  user: process.env.MYSQLUSER,
-  password: process.env.MYSQLPASSWORD,
-  database: process.env.MYSQLDATABASE,
-  port: process.env.MYSQLPORT,
   ssl: {
     rejectUnauthorized: false
-  }
+  },
+
+  // Keep the application pool deliberately small.
+  max: 5,
+
+  // Close idle client connections after 10 seconds.
+  idleTimeoutMillis: 10000,
+
+  // Don't wait indefinitely for a client/connection.
+  connectionTimeoutMillis: 15000,
+
+  // Help keep TCP connections alive.
+  keepAlive: true,
+  keepAliveInitialDelayMillis: 10000
 });
 
-db.connect((err) => {
-  if (err) {
-    console.error("❌ Connection failed. Error details:");
-    console.error("Code:", err.code);
-    console.error("Message:", err.message);
-  } else {
-    console.log("✅ Successfully connected to Railway MySQL");
-  }
+pool.on("connect", () => {
+  console.log("✅ PostgreSQL client connected");
 });
 
-module.exports = db;
+pool.on("acquire", () => {
+  console.log("🔗 PostgreSQL connection acquired");
+});
+
+pool.on("remove", () => {
+  console.log("🔌 PostgreSQL client removed from pool");
+});
+
+pool.on("error", (error) => {
+  console.error("❌ PostgreSQL pool error:", error);
+});
+
+module.exports = pool;

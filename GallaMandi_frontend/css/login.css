@@ -1,114 +1,64 @@
-* {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap");
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
 body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #f7f8fa, #e3e6e6);
+  margin: 0;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: max(20px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(20px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+  background: linear-gradient(135deg, #edf6ec, #fbfaf5);
+  font-family: "DM Sans", sans-serif;
+  color: #18231b;
 }
-
-.amazon-login {
-    width: 350px;
-}
-
-.logo {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
+.amazon-login, .amazon-register { width: min(100%, 410px); }
+.logo { text-align: center; margin-bottom: 22px; }
 .logo h1 {
-    font-size: 28px;
-    font-weight: bold;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(29px, 9vw, 34px);
+  margin: 0;
+  color: #174a28;
 }
-
-.login-box {
-    border: 1px solid #ddd;
-    padding: 25px 30px;
-    border-radius: 10px;
-    background: white;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+.logo h1::before { content: "✦"; font-family: system-ui; color: #2f7d42; margin-right: 8px; }
+.login-box, .register-box {
+  background: #fff;
+  border: 1px solid #e1e8df;
+  padding: clamp(20px, 6vw, 30px);
+  border-radius: 20px;
+  box-shadow: 0 18px 55px rgba(18, 53, 31, 0.1);
 }
-
-.login-box h2 {
-    font-weight: 400;
-    margin-bottom: 15px;
-}
-
-label {
-    font-size: 14px;
-    font-weight: bold;
-    display: block;
-    margin-top: 12px;
-}
-
+.login-box h2, .register-box h2 { font-family: "Playfair Display", serif; font-size: clamp(25px, 7vw, 29px); margin: 0 0 22px; color: #12351f; }
+label { display: block; font-size: 13px; font-weight: 700; margin: 15px 0 6px; }
 input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 4px;
-    border: 1px solid #a6a6a6;
-    border-radius: 4px;
-    font-size: 14px;
+  width: 100%;
+  min-height: 44px;
+  padding: 12px 13px;
+  border: 1px solid #cfd9cd;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
 }
-
-input:focus {
-    border-color: #f0c14b;
-    outline: none;
-    box-shadow: 0 0 3px 2px rgba(240,193,75,.5);
-}
-
+input:focus { border-color: #2f7d42; box-shadow: 0 0 0 3px rgba(47, 125, 66, 0.1); }
 button {
-    margin-top: 18px;
-    width: 100%;
-    padding: 10px;
-    background: #ffd814;
-    border: 1px solid #fcd200;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
+  width: 100%;
+  min-height: 46px;
+  margin-top: 20px;
+  padding: 12px;
+  border: 0;
+  border-radius: 10px;
+  background: #1f6b35;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
 }
-
-button:hover {
-    background: #f7ca00;
-}
-
-.message {
-    margin-top: 10px;
-    font-size: 13px;
-    color: red;
-}
-
-.register-section {
-    margin-top: 25px;
-    text-align: center;
-}
-
-.register-section hr {
-    margin-bottom: 10px;
-    border: none;
-    border-top: 1px solid #ddd;
-}
-
-.register-section p {
-    font-size: 13px;
-    margin-bottom: 8px;
-}
-
-.register-btn {
-    display: inline-block;
-    padding: 8px 16px;
-    border: 1px solid #a6a6a6;
-    border-radius: 8px;
-    background: #f0f2f2;
-    text-decoration: none;
-    font-size: 13px;
-    color: black;
-}
-
-.register-btn:hover {
-    background: #e3e6e6;
+button:hover { background: #12351f; }
+.message { min-height: 18px; margin: 10px 0 0; font-size: 13px; color: #b43d3d; }
+.register-section, .signin-section { text-align: center; margin-top: 22px; color: #68736b; font-size: 13px; }
+.register-section hr, .signin-section hr { border: 0; border-top: 1px solid #e1e8df; margin-bottom: 16px; }
+.register-btn, .signin-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 10px 16px; border: 1px solid #ccd8cb; border-radius: 10px; text-decoration: none; color: #174a28; background: #f4faf4; font-weight: 600; }
+.register-btn:hover, .signin-btn:hover { background: #e8f4e9; }
+.terms { font-size: 12px; color: #68736b; line-height: 1.5; margin-top: 18px; }
+.terms a { color: #1f6b35; }
+@media (max-width: 360px) {
+  .login-box, .register-box { border-radius: 16px; }
 }

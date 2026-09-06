@@ -1,45 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Your Cart - GallaMandi</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart | GallaMandi</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-
-<nav class="navbar">
-    <div class="logo">GallaMandi</div>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
+    <nav class="navbar"><a class="logo" href="index.html" aria-label="GallaMandi home">GallaMandi</a>
+        <div class="nav-links"><a href="index.html">Shop</a><a href="orders.html">Orders</a></div>
+    </nav>
+    <main class="cart-container">
+        <div class="section-heading">
+            <div>
+                <h2>Your cart</h2>
+                <p>Review your items before checkout.</p>
+            </div>
+        </div>
+        <div class="cart-layout">
+            <div id="cart-items" class="cart-list"></div>
+            <aside class="cart-summary">
+                <h3>Order summary</h3>
+                <div class="total-row"><span>Total</span><strong id="total-price">₹0</strong></div><button
+                    id="checkoutBtn" disabled>Proceed to checkout</button>
+            </aside>
+        </div>
+    </main>
+    <div id="checkoutModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Delivery details</h2>
+            <form id="checkoutForm"><input type="text" id="fullName" placeholder="Full name" required><input type="tel"
+                    id="phone" placeholder="Phone number" required><input type="text" id="address" placeholder="Address"
+                    required><input type="text" id="city" placeholder="City" required><input type="text" id="pincode"
+                    placeholder="Pincode" pattern="[0-9]{6}" required><button type="submit">Place order</button></form>
+            <button id="closeModal" class="close-btn">Cancel</button>
+        </div>
     </div>
-</nav>
-
-<div class="cart-container">
-    <h2>Your Cart</h2>
-    <div id="cart-items"></div>
-    <h3 id="total-price"></h3>
-    <button id="checkoutBtn">Proceed to Checkout</button>
-</div>
-
-<div id="checkoutModal" class="modal hidden">
-    <div class="modal-content">
-        <h2>Shipping Details</h2>
-
-        <form id="checkoutForm">
-            <input type="text" id="fullName" placeholder="Full Name" required>
-            <input type="text" id="phone" placeholder="Phone Number" required>
-            <input type="text" id="address" placeholder="Address" required>
-            <input type="text" id="city" placeholder="City" required>
-            <input type="text" id="pincode" placeholder="Pincode" required>
-
-            <button type="submit">Place Order</button>
-        </form>
-
-        <button id="closeModal" class="close-btn">Cancel</button>
-    </div>
-</div>
-
-<script src="js/cart.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/cart.js"></script>
 </body>
+
 </html>

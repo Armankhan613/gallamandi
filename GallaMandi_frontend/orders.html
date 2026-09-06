@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>My Orders - GallaMandi</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders | GallaMandi</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-
-<nav class="navbar">
-    <div class="logo">GallaMandi</div>
-    <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="cart.html">Cart</a>
-    </div>
-</nav>
-
-<div class="orders-container">
-    <h2>My Orders</h2>
-    <div id="orders-list"></div>
-</div>
-
-<script src="js/orders.js"></script>
+    <nav class="navbar"><a class="logo" href="index.html" aria-label="GallaMandi home">GallaMandi</a>
+        <div class="nav-links"><a href="index.html">Shop</a><a href="cart.html">Cart</a></div>
+    </nav>
+    <main class="orders-container">
+        <div class="section-heading">
+            <div>
+                <h2>Your orders</h2>
+                <p>Keep track of everything you've purchased.</p>
+            </div>
+        </div>
+        <div id="orders-list"></div>
+    </main>
+    <script src="js/config.js"></script>
+    <script src="js/orders.js"></script>
 </body>
+
 </html>

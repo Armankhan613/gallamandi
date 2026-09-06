@@ -1,31 +1,33 @@
 const form = document.getElementById("registerForm");
 
 form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const data = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value
-    };
+  const data = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    password: document.getElementById("password").value,
+  };
 
-    try {
-        const response = await fetch("https://gallamandi.onrender.com/api/auth/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/api/auth/register`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      },
+    );
 
-        const result = await response.json();
-        alert(result.message);
+    const result = await response.json();
+    alert(result.message);
 
-        if (response.ok) {
-            window.location.href = "login.html";
-        }
-
-    } catch (error) {
-        console.error(error);
+    if (response.ok) {
+      window.location.href = "login.html";
     }
+  } catch (error) {
+    console.error(error);
+  }
 });

@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>GallaMandi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GallaMandi — fresh agricultural products from trusted sellers.">
+    <title>GallaMandi | From Farm to Home</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
-    <nav class="navbar">
-        <div class="logo">GallaMandi</div>
-
-        <div class="search-bar">
-            <input id="searchInput" type="text" placeholder="Search products...">
-            <button id="searchBtn">Search</button>
-        </div>
-
-        <div class="nav-links">
-            <span id="user-section"></span>
-            <a href="cart.html">Cart 🛒 <span id="cart-count">(0)</span></a>
-            <a href="orders.html" id="orders-link" >My Orders</a>
-        </div>
+    <nav class="navbar"><a class="logo" href="index.html" aria-label="GallaMandi home">GallaMandi</a>
+        <div class="search-bar"><input id="searchInput" type="search" placeholder="Search rice, wheat, onions..."
+                aria-label="Search products"><button id="searchBtn">Search</button></div>
+        <div class="nav-links"><span id="user-section"></span><a href="cart.html">Cart 🛒 <span
+                    id="cart-count">0</span></a><a href="orders.html" id="orders-link">Orders</a></div>
     </nav>
-
     <section class="hero">
-        <h1>Welcome to GallaMandi</h1>
-        <p>Best deals. Fast delivery. Trusted products.</p>
+        <p class="eyebrow">Farm • Market • Home</p>
+        <h1>Good food starts with good farming.</h1>
+        <p>Shop quality agricultural products through a simple marketplace built to connect farmers and buyers.</p>
+        <div class="hero-actions"><a class="hero-btn" href="#products">Explore products</a><a class="hero-btn secondary"
+                href="orders.html">Track orders</a></div>
     </section>
-    <section class="products-container">
-        <h2>Featured Products</h2>
+    <section class="products-container" id="products">
+        <div class="section-heading">
+            <div>
+                <h2>Fresh from the mandi</h2>
+                <p>Browse available products and add what you need to your cart.</p>
+            </div>
+        </div>
         <div id="product-list" class="product-grid"></div>
     </section>
-
+    <script src="js/config.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

@@ -1,53 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Create Account - GallaMandi</title>
-    <link rel="stylesheet" href="css/register.css">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create account | GallaMandi</title>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/register.css">
 </head>
+
 <body>
-
-<div class="amazon-register">
-
-    <div class="logo">
-        <h1>GallaMandi</h1>
-    </div>
-
-    <div class="register-box">
-        <h2>Create account</h2>
-
-        <form id="registerForm">
-
-            <label>Your name</label>
-            <input type="text" id="name" required>
-
-            <label>Email</label>
-            <input type="email" id="email" required>
-
-            <label>Password</label>
-            <input type="password" id="password" required>
-            <small>Password must be at least 6 characters</small>
-
-            <button type="submit">Create your GallaMandi account</button>
-
-        </form>
-
-        <div class="terms">
-            By creating an account, you agree to GallaMandi’s
-            <a href="#">Conditions of Use</a> and
-            <a href="#">Privacy Notice</a>.
+    <main class="amazon-register">
+        <div class="logo">
+            <h1>GallaMandi</h1>
         </div>
-    </div>
-
-    <div class="signin-section">
-        <hr>
-        <p>Already have an account?</p>
-        <a href="login.html" class="signin-btn">Sign-In</a>
-    </div>
-
-</div>
-
-<script src="js/register.js"></script>
+        <div class="register-box">
+            <h2>Create account</h2>
+            <form id="registerForm"><label for="name">Your name</label><input type="text" id="name" autocomplete="name"
+                    required><label for="email">Email</label><input type="email" id="email" autocomplete="email"
+                    required><label for="password">Password</label><input type="password" id="password" minlength="6"
+                    autocomplete="new-password" required><small>Password must be at least 6 characters</small><button
+                    type="submit">Create account</button></form>
+            <div class="terms">By creating an account, you agree to GallaMandi’s <a href="#">Conditions of Use</a> and
+                <a href="#">Privacy Notice</a>.</div>
+        </div>
+        <div class="signin-section">
+            <hr>
+            <p>Already have an account?</p><a href="login.html" class="signin-btn">Sign in</a>
+        </div>
+    </main>
+    <script src="js/config.js"></script>
+    <script src="js/register.js"></script>
 </body>
+
 </html>
