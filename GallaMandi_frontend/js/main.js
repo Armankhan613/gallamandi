@@ -99,14 +99,60 @@ function logout() {
 }
 
 
-function updateNavbar() {
-  const token = localStorage.getItem("token");
-  const role = localStorage.getItem("role");
-  const user = document.getElementById("user-section");
+function decodeJwtPayload(token) {
+  try {
+    const payload = token.split(".")[1];
 
+    if (!payload) return null;
+
+    const base64 = payload.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map(
+          (char) =>
+            "%" + ("00" + char.charCodeAt(0).toString(16)).slice(-2),
+        )
+        .join(""),
+    );
+
+    return JSON.parse(jsonPayload);
+  } catch (error) {
+    return null;
+  }
+}
+
+function getValidToken() {
+  const token = localStorage.getItem("token");
+
+  if (!token) return null;
+
+  const payload = decodeJwtPayload(token);
+
+  // Invalid token
+  if (!payload) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    return null;
+  }
+
+  // Token expired
+  if (payload.exp && Date.now() >= payload.exp * 1000) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    return null;
+  }
+
+  return token;
+}
+
+function updateNavbar() {
+  const user = document.getElementById("user-section");
   if (!user) return;
 
-  // Not logged in
+  const token = getValidToken();
+
+  // Visitor / logged-out user
   if (!token) {
     user.innerHTML = `
       <a href="login.html">Login</a>
@@ -116,7 +162,8 @@ function updateNavbar() {
     return;
   }
 
-  // Logged in
+  const role = localStorage.getItem("role");
+
   user.innerHTML = `
     <a href="#" id="logout-link">Logout</a>
     ${
