@@ -272,7 +272,7 @@ async function loadOrders() {
       <article class='order-card'>
         <div class='order-head'>
           <div><p class='eyebrow'>Order #${order.id}</p><h3>${order.user_name || "Customer"}</h3><div class='order-meta'>${order.user_email || ""}<br>${new Date(order.created_at).toLocaleString()}</div></div>
-          <div style='text-align:right'><strong>₹${Number(order.total_amount).toLocaleString("en-IN")}</strong><br><select class='status-select order-status' data-id='${order.id}'>${["placed","confirmed","processing","shipped","delivered","cancelled"].map(s => `<option value='${s}' ${s===order.status?"selected":""}>${s}</option>`).join("")}</select></div>
+          <div style='text-align:right'><strong>Total:₹${Number(order.total_amount).toLocaleString("en-IN")}</strong><br><select class='status-select order-status' data-id='${order.id}'>${["placed","confirmed","processing","shipped","delivered","cancelled"].map(s => `<option value='${s}' ${s===order.status?"selected":""}>${s}</option>`).join("")}</select></div>
         </div>
         <div class='order-meta' style='margin-top:14px'>Ship to: ${order.recipient}, ${order.city} - ${order.pincode}<br>${order.address} · ${order.phone}</div>
         <div class='order-items'>${(order.items||[]).map(item => `<div class='order-item'>${item.image_url ? `<img src='${getImageUrl(item.image_url)}' alt=''>` : ""}<div><strong>${item.name || "Deleted product"}</strong><span>Qty ${item.quantity} · ₹${Number(item.price).toLocaleString("en-IN")}</span></div></div>`).join("")}</div>
